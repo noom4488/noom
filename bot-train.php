@@ -22,18 +22,20 @@ function reply_msg($text,$replyToken)//สร้างข้อความแ�
 }
 
 // รับข้อมูล
-$content = file_get_contents('php://input');
-$events = json_decode($content, true);
-if (!is_null($events['events'])) 
+$content = file_get_contents('php://input');//รับข้อมูลไลน์แบบนี้ไม่ต้องแก้
+$events = json_decode($content, true);//การแปลงรูปแบบข้อมูลไม่ต้องแก้
+if (!is_null($events['events'])) //เชคว่าว่างถ้าไม่ว่างเข้าฟังชั่น
 {
-    foreach ($events['events'] as $event) 
+    foreach ($events['events'] as $event) //วนไปดู
     {
         if ($event['type'] == 'message' && $event['message']['type'] == 'text')
         {
             $replyToken = $event['replyToken']; //เก็บ reply token เอาไว้ตอบกลับ
             $txtin = $event['message']['text'];//เอาข้อความจากไลน์ใส่ตัวแปร $txtin
             $lineid = $event['source']['userId'];//เก็บ UID
-            reply_msg($txtin,$replyToken);
+            if($txtin=="สวัสดีตอนเช้า"){$txtrp="บ้า";
+                                       }
+            reply_msg($txtrp,$replyToken);
         }
     }
 }
