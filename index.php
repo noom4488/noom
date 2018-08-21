@@ -1,3 +1,3 @@
 <?php
-echo "HI I AM NOOM";
+echo "ควยถอก";
 ?>
