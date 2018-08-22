@@ -21,7 +21,6 @@ function reply_msg($text,$replyToken)//สร้างข้อความแ�
     curl_close($ch);
     echo $result . "\r\n";
 }
-
 // รับข้อมูล
 $content = file_get_contents('php://input');//รับข้อมูลจากไลน์
 $events = json_decode($content, true);//แปลง json เป็น php
@@ -45,7 +44,7 @@ if (!is_null($events['events'])) //check ค่าในตัวแปร $even
 				$a=1;
 				while($obj = mysqli_fetch_array($query_area))
 				{
-					$txtsend = $txtsend ."\n\n".$a.".".$obj["area"]."\n"."ผู้ดำเนินการ ".$obj['oper']."\n".$obj["wbs"]."\n".$obj["name"]."เลิก";
+					$txtsend = $txtsend ."\n\n".$a.".".$obj["area"]."\n"."ผู้ดำเนินการ ".$obj['oper']."\n"." wbs ".$obj["wbs"]."\n".$obj["name"]."เลิก";
 					$a = $a+1;
 				}
 				reply_msg($txtsend,$replyToken);//เรียกใช้ function
