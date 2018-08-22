@@ -2,7 +2,7 @@
 require('./db/conect-bb.php');//เรียกใช้ file connect-db
 function reply_msg($text,$replyToken)//สร้างข้อความและตอบกลับ
 {
-    $access_token = '7Bkj6AqoRCKOJc08sAW2luAwLn3PT99764/VTeSHnDzCGlc0oXF+ourT4ZVRK01darE/LYd5ihfcuxEbHa30I4qAvzfJNK3EStUU/TKJcfw9xOJxTNo+AMJtXwpQD0zdZsLo/TDUGFUZAqSbN5fWUwdB04t89/1O/w1cDnyilFU=';
+    $access_token = 'vU4oOFT7w8PEhE/XMq6SbmVsBhxniyLo4gnwIDXyiNwMwwx7ZezPXDnpPDoO7hea1jMrf2xqViwXqv/RFZcv/3V9u5VVByUpJTzLnFXuWAJ5Unf+7t1q5V9hX0elhM/CjZSPdbShkpRhMaTQY486IQdB04t89/1O/w1cDnyilFU=';
     $messages = ['type' => 'text','text' => $text];//สร้างตัวแปร 
     $url = 'https://api.line.me/v2/bot/message/reply';
     $data = [
@@ -45,7 +45,7 @@ if (!is_null($events['events'])) //check ค่าในตัวแปร $even
 				$a=1;
 				while($obj = mysqli_fetch_array($query_area))
 				{
-					$txtsend = $txtsend ."\n\n".$a.".".$obj["oper"]."\n".$obj["area"]."\n".$obj["wbs"]."\n".$obj["name"];
+					$txtsend = $txtsend ."\n\n".$a.".".$obj["oper"]."\n".$obj['area']."\n".$obj["wbs"]."\n".$obj["name"];
 					$a = $a+1;
 				}
 				reply_msg($txtsend,$replyToken);//เรียกใช้ function
