@@ -44,7 +44,7 @@ if (!is_null($events['events'])) //check ค่าในตัวแปร $even
 				$a=1;
 				while($obj = mysqli_fetch_array($query_area))
 				{
-					$txtsend = $txtsend ."\n\n".$a.".".$obj["area"]."\n"."ผู้ดำเนินการ ".$obj['oper']."\n"."wbs ".$obj["wbs"]."\n"."ชื่องาน"."...".$obj["name"]."\n"."สถานะ   ".$obj["status"];
+					$txtsend = $txtsend ."\n\n".$a.".".$obj["area"]."\n"."ผู้ดำเนินการ ".$obj['oper']."\n"."wbs ".$obj["wbs"]."\n"."ชื่องาน   ".$obj["name"]."\n"."สถานะ   ".$obj["status"]."\n"."ปริมาณงาน    ".$obj["work_load"]."วงจร-กม.";
 					$a = $a+1;
 				}
 				reply_msg($txtsend,$replyToken);//เรียกใช้ function
